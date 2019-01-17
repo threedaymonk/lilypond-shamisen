@@ -145,7 +145,6 @@ shamisenNotation = {
   \override TabStaff.Stem.stencil = #underbars
   \revert TabStaff.Rest.stencil
   \override Rest #'stencil = #dot-rests
-  \revert TabStaff.TimeSignature.stencil
   \override Stem.direction = #DOWN
 }
 

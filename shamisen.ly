@@ -146,6 +146,7 @@ shamisenNotation = {
   \revert TabStaff.Rest.stencil
   \override Rest #'stencil = #dot-rests
   \override Stem.direction = #DOWN
+  \override Stem.length = 1
 }
 
 honchoushiTuning = \stringTuning <c f c'>

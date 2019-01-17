@@ -140,6 +140,7 @@ shamisenNotation = {
   \revert TabStaff.Script.stencil
   \revert TabStaff.TextScript.stencil
   \revert TabStaff.NoteColumn.ignore-collision
+  \revert TabStaff.Dots.stencil
   \revert TabStaff.Stem.stencil
   \override TabStaff.Stem.stencil = #underbars
   \revert TabStaff.Rest.stencil

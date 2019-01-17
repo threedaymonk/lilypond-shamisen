@@ -1,5 +1,7 @@
 shamisen-markup-font = #'(font-name . "IPAPGothic")
 
+underbar-width =  0.8
+
 \layout {
   \context {
     \Score
@@ -41,7 +43,7 @@ shamisen-markup-font = #'(font-name . "IPAPGothic")
                    (lambda (e a)
                      (cons*
                        (list 'moveto 0 (- top (* e 0.4)))
-                       (list 'lineto 0.8 (- top (* e 0.4)))
+                       (list 'lineto underbar-width (- top (* e 0.4)))
                        a))
                    '()
                    (iota lines)))))
@@ -68,8 +70,8 @@ shamisen-markup-font = #'(font-name . "IPAPGothic")
                  (fold
                    (lambda (e a)
                      (cons*
-                       (list 'moveto -0.4 (- top (* e 0.4)))
-                       (list 'lineto 0.4 (- top (* e 0.4)))
+                       (list 'moveto (- 0 (/ underbar-width 2)) (- top (* e 0.4)))
+                       (list 'lineto (/ underbar-width 2) (- top (* e 0.4)))
                        a))
                    '()
                    (iota lines)))))

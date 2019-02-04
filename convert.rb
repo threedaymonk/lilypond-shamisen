@@ -29,44 +29,91 @@ end
 tuning =  TUNINGS['niagari']
 string = 1
 
+class NewLineChomper
+  def initialize(io = $stdout)
+    @io = io
+    @consecutive_newlines = 0
+  end
+
+  def print(s)
+    s.chars.each do |c|
+      emit c
+    end
+  end
+
+  def emit(c)
+    if c == "\n"
+      if @consecutive_newlines < 2
+        @io.print c
+      end
+      @consecutive_newlines += 1
+    else
+      @io.print c
+      @consecutive_newlines = 0
+    end
+  end
+end
+
 require 'strscan'
+
+def parse_lilypond(io, s)
+  until s.eos?
+    if s.scan(/%{\s+shamisen\s*/)
+      parse_shamisen io, s
+    elsif s.scan(/.|\n/)
+      io.print s[0]
+    else
+      raise "No idea at #{s}"
+    end
+  end
+end
+
+def parse_shamisen(io, s)
+  until s.eos?
+    if s.scan(/%}\s*/)
+      return
+    elsif s.scan(/\s*iii/)
+      io.print '^\\third'
+    elsif s.scan(/\s*ii/)
+      io.print '^\\second'
+    elsif s.scan(/\s*i/)
+      io.print '^\\first'
+    elsif s.scan(/ha/)
+      io.print '\\hajiki'
+    elsif s.scan(/su/)
+      io.print '\\sukui'
+    elsif s.scan(/u/)
+      io.print '\\uchi'
+    elsif s.scan(/o/)
+      io.print '\\oshi'
+    elsif s.scan(/\s+|r\d*|</)
+      io.print s[0]
+    elsif s.scan(/tuning\s+(?<name>\w+)/)
+      tuning = TUNINGS.fetch(s[:name])
+    elsif s.scan(/[0-9#b]+/)
+      offset = position_to_offset(s[0])
+      duration = nil
+      if s.scan(/-(?<duration>\d+)/)
+        duration = s[:duration]
+      end
+      if s.scan(/\\(?<string>\d)/)
+        string = s[:string].to_i
+      end
+      open_name, open_octave = tuning.fetch(string - 1)
+      note = offset_to_note(open_name, open_octave, offset)
+      io.print "#{note}#{duration}"
+
+      if s.scan(/!/) || (string < 3 && offset > 4)
+        io.print "\\#{string}"
+      end
+    elsif s.scan(/\S+/)
+      io.print s[0]
+    else
+      raise "No idea at #{s}"
+    end
+  end
+end
 
 s = StringScanner.new(ARGF.read)
 
-until s.eos?
-  if s.scan(/\s*iii/)
-    print '^\\third'
-  elsif s.scan(/\s*ii/)
-    print '^\\second'
-  elsif s.scan(/\s*i/)
-    print '^\\first'
-  elsif s.scan(/ha/)
-    print '\\hajiki'
-  elsif s.scan(/su/)
-    print '\\sukui'
-  elsif s.scan(/u/)
-    print '\\uchi'
-  elsif s.scan(/\s+|r\d*|</)
-    print s[0]
-  elsif s.scan(/tuning\s+(?<name>\w+)/)
-    tuning = TUNINGS.fetch(s[:name])
-  elsif s.scan(/[0-9#b]+/)
-    offset = position_to_offset(s[0])
-    duration = nil
-    if s.scan(/-(?<duration>\d+)/)
-      duration = s[:duration]
-    end
-    if s.scan(/\\(?<string>\d)/)
-      string = s[:string].to_i
-    end
-    open_name, open_octave = tuning.fetch(string - 1)
-    note = offset_to_note(open_name, open_octave, offset)
-    print "#{note}#{duration}"
-
-    if s.scan(/!/)
-      print "\\#{string}"
-    end
-  elsif s.scan(/\S+/)
-    print s[0]
-  end
-end
+parse_lilypond NewLineChomper.new, s

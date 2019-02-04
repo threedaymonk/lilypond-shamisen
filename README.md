@@ -29,6 +29,5 @@ Hajiki, sukui, and uchi are normal annotations, using text markup.
 ## Bonus
 
 Also included is a small Ruby program that can convert a simple LilyPond-like
-language based on tablature into notes that can be pasted into a LilyPond file,
-to assist in transcribing existing works. See sakurasakura.txt for an example
-of how this works.
+language based on tablature into notes, to assist in transcribing existing
+works. See sakurasakura.txt for an example of how this works.

@@ -38,12 +38,12 @@ underbar-width =  0.8
           (ly:stencil-translate
            (grob-interpret-markup grob
              (markup
-               (#:path 0.2
+               (#:path 0.15
                  (fold
                    (lambda (e a)
                      (cons*
-                       (list 'moveto 0 (- top (* e 0.4)))
-                       (list 'lineto underbar-width (- top (* e 0.4)))
+                       (list 'moveto 0 (- top (* e 0.3)))
+                       (list 'lineto underbar-width (- top (* e 0.3)))
                        a))
                    '()
                    (iota lines)))))
@@ -66,12 +66,12 @@ underbar-width =  0.8
          (ly:stencil-translate
            (grob-interpret-markup grob
              (markup
-               (#:path 0.2
+               (#:path 0.15
                  (fold
                    (lambda (e a)
                      (cons*
-                       (list 'moveto (- 0 (/ underbar-width 2)) (- top (* e 0.4)))
-                       (list 'lineto (/ underbar-width 2) (- top (* e 0.4)))
+                       (list 'moveto (- 0 (/ underbar-width 2)) (- top (* e 0.3)))
+                       (list 'lineto (/ underbar-width 2) (- top (* e 0.3)))
                        a))
                    '()
                    (iota lines)))))

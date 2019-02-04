@@ -15,7 +15,6 @@ This is a work in progress, but should be adequate for most pieces.
 
 ## Missing
 
-* suberi - can use a slur as a stand-in or annotate with an appropriate Unicode glyph
 * half-note length indicators - these can probably be inferred from the bar length
 
 ## Implementation notes

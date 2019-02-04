@@ -143,6 +143,13 @@ shamisenNotation = {
   \revert TabStaff.NoteColumn.ignore-collision
   \revert TabStaff.Dots.stencil
   \revert TabStaff.Stem.stencil
+
+  \revert TabStaff.Slur.stencil
+  \revert TabStaff.PhrasingSlur.stencil
+
+  \revert TabStaff.TupletBracket.stencil
+  \revert TabStaff.TupletNumber.stencil
+
   \override TabStaff.Stem.stencil = #underbars
   \revert TabStaff.Rest.stencil
   \override Rest #'stencil = #dot-rests

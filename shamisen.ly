@@ -92,6 +92,9 @@ uchi-markup = \markup {
   \lower #0.5
   \override \shamisen-markup-font \center-align \teeny "ウ"
 }
+oshi-markup = \markup {
+  \override \shamisen-markup-font \center-align \teeny "⅃"
+}
 first = \markup {
   \override \shamisen-markup-font \teeny "Ⅰ"
 }
@@ -121,11 +124,18 @@ third = \markup {
         (stencil . ,ly:text-interface::print)
         (text . ,uchi-markup)
         (quantize-position . #t)
+        (direction . ,DOWN)))
+   `("oshi"
+      . (
+        (stencil . ,ly:text-interface::print)
+        (text . ,oshi-markup)
+        (quantize-position . #t)
         (direction . ,DOWN)))))
 
 hajiki = #(make-articulation "hajiki")
 sukui = #(make-articulation "sukui")
 uchi = #(make-articulation "uchi")
+oshi = #(make-articulation "oshi")
 
 shamisenNotation = {
   \revert TabStaff.Script.stencil

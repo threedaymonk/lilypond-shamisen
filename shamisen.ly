@@ -81,12 +81,15 @@ underbar-width =  0.8
 
 
 hajiki-markup = \markup {
+  \lower #0.5
   \override \shamisen-markup-font \center-align \teeny "ハ"
 }
 sukui-markup = \markup {
+  \lower #0.5
   \override \shamisen-markup-font \center-align \teeny "ス"
 }
 uchi-markup = \markup {
+  \lower #0.5
   \override \shamisen-markup-font \center-align \teeny "ウ"
 }
 first = \markup {
@@ -105,31 +108,19 @@ third = \markup {
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,hajiki-markup)
-        (side-relative-direction . ,DOWN)
-        (avoid-slur . ignore)
-        (padding . 0.20)
         (quantize-position . #t)
-        (script-priority . -100)
         (direction . ,DOWN)))
     `("sukui"
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,sukui-markup)
-        (side-relative-direction . ,DOWN)
-        (avoid-slur . ignore)
-        (padding . 0.20)
         (quantize-position . #t)
-        (script-priority . -100)
         (direction . ,DOWN)))
    `("uchi"
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,uchi-markup)
-        (side-relative-direction . ,DOWN)
-        (avoid-slur . ignore)
-        (padding . 0.20)
         (quantize-position . #t)
-        (script-priority . -100)
         (direction . ,DOWN)))))
 
 hajiki = #(make-articulation "hajiki")
@@ -146,7 +137,7 @@ shamisenNotation = {
   \revert TabStaff.Rest.stencil
   \override Rest #'stencil = #dot-rests
   \override Stem.direction = #DOWN
-  \override Stem.length = 1
+  \override Stem.length = 0
 }
 
 honchoushiTuning = \stringTuning <c f c'>

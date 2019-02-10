@@ -103,7 +103,7 @@ private
       elsif s.scan(/[0-9#b]+/)
         offset = position_to_offset(s[0])
         duration = nil
-        if s.scan(/-(?<duration>\d+)/)
+        if s.scan(/-(?<duration>\d+\.?)/)
           duration = s[:duration]
         end
         if s.scan(/\\(?<string>\d)/)

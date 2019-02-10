@@ -115,7 +115,7 @@ private
         note = offset_to_note(open_name, open_octave, offset)
         io.print "#{note}#{duration}"
 
-        if s.scan(/!/) || (@string < 3 && offset > 4)
+        if s.scan(/!/) || (@string == 2 && offset >= 4) || (@string == 1 && offset >= 6)
           io.print "\\#{@string}"
         end
       elsif s.scan(/\S+/)

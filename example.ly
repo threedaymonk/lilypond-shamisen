@@ -39,23 +39,10 @@
     g8. f16 g8. ef16
 
     f8.^\third g16
-    \newSpacingSection
-    \override Score.SpacingSpanner.average-spacing-wishes = ##f
-    \override Score.SpacingSpanner.shortest-duration-space = #0
-    c'16\2^\third bf \hajiki g \hajiki g
-    \newSpacingSection
-    \revert Score.SpacingSpanner.average-spacing-wishes
-    \revert Score.SpacingSpanner.shortest-duration-space
+    \trtr { c'16\2^\third bf \hajiki g \hajiki g }
 
     c'8 c' \sukui
-    \newSpacingSection
-    \override Score.SpacingSpanner.average-spacing-wishes = ##f
-    \override Score.SpacingSpanner.shortest-duration-space = #0
-    f'16 ef' \hajiki c' \hajiki
-    \newSpacingSection
-    \revert Score.SpacingSpanner.average-spacing-wishes
-    \revert Score.SpacingSpanner.shortest-duration-space
-    bf
+    \trtr { f'16 ef' \hajiki c' \hajiki bf }
 
     g16 bf \uchi c'8 r4
 

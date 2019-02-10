@@ -160,3 +160,17 @@ shamisenNotation = {
 honchoushiTuning = \stringTuning <c f c'>
 niagariTuning = \stringTuning <c g c'>
 sansagariTuning = \stringTuning <c f bf'>
+
+trtr =
+#(define-music-function
+  (parser location music)
+  (ly:music?)
+  #{
+    \newSpacingSection
+    \override Score.SpacingSpanner.average-spacing-wishes = ##f
+    \override Score.SpacingSpanner.shortest-duration-space = #0
+    #music
+    \newSpacingSection
+    \revert Score.SpacingSpanner.average-spacing-wishes
+    \revert Score.SpacingSpanner.shortest-duration-space
+  #})

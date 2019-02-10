@@ -82,6 +82,8 @@ private
     until s.eos?
       if s.scan(/%}\s*/)
         return
+      elsif s.scan(/%\s*(.*)/)
+        io.print s[1]
       elsif s.scan(/\s*iii/)
         io.print '^\\third'
       elsif s.scan(/\s*ii/)

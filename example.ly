@@ -31,36 +31,36 @@
     \set TabStaff.stringTunings = #niagariTuning
     \shamisenNotation
     \time 2/4
- 
+
     c'8. bf16 g bf \uchi c'8
-    
+
     g8. f16^\third g bf \uchi c'8
-    
+
     g8. f16 g8. ef16
-    
+
     f8.^\third g16
-    \newSpacingSection   
+    \newSpacingSection
     \override Score.SpacingSpanner.average-spacing-wishes = ##f
     \override Score.SpacingSpanner.shortest-duration-space = #0
-    c'16\2^\third bf \hajiki g \hajiki g 
-    \newSpacingSection   
+    c'16\2^\third bf \hajiki g \hajiki g
+    \newSpacingSection
     \revert Score.SpacingSpanner.average-spacing-wishes
     \revert Score.SpacingSpanner.shortest-duration-space
-    
+
     c'8 c' \sukui
-    \newSpacingSection   
+    \newSpacingSection
     \override Score.SpacingSpanner.average-spacing-wishes = ##f
     \override Score.SpacingSpanner.shortest-duration-space = #0
     f'16 ef' \hajiki c' \hajiki
-    \newSpacingSection   
+    \newSpacingSection
     \revert Score.SpacingSpanner.average-spacing-wishes
     \revert Score.SpacingSpanner.shortest-duration-space
     bf
-    
+
     g16 bf \uchi c'8 r4
-    
+
     g8. f16 g8. <c g c'>16
-    
+
     <c g c'>2\fermata
   }
 }

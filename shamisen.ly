@@ -173,4 +173,5 @@ trtr =
     \newSpacingSection
     \revert Score.SpacingSpanner.average-spacing-wishes
     \revert Score.SpacingSpanner.shortest-duration-space
+    \once \override NoteColumn.X-offset = 1
   #})

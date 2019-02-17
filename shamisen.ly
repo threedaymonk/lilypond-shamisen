@@ -87,7 +87,8 @@ uchi-markup = \markup {
   \override \shamisen-markup-font \center-align \teeny "ウ"
 }
 oshi-markup = \markup {
-  \override \shamisen-markup-font \center-align \teeny "⅃"
+  \lower #0.7
+  \override \shamisen-markup-font \center-align \teeny "┛ "
 }
 keshi-markup = \markup {
   \lower #0.6

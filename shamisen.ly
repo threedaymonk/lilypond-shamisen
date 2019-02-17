@@ -1,3 +1,8 @@
+% Shamisen notation for LilyPond
+%
+% For more information and updates, visit:
+% https://github.com/threedaymonk/lilypond-shamisen
+
 shamisen-markup-font = #'(font-name . "IPAexGothic")
 
 underbar-width =  0.8

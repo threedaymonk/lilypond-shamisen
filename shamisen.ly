@@ -11,7 +11,9 @@ shamisen-markup-font = #'(font-name . "IPAexGothic")
     tablatureFormat =
       #(lambda (context string-number fret-number)
         (let* ((shami-tab-signs
-                '(0 1 2 3 "#" 4 5 6 7 8 9 "b" 10 11 12 13 "1#" 14 15 16 17 18))
+                '(0   1  2  3  "♯"  4  5  6  7  8  9  "♭"
+                  10 11 12 13 "1♯" 14 15 16 17 18 19 "1♭"
+                  20 21 22 23 "2♯" 24 25 26))
                (ls-length (length shami-tab-signs))
                (my-sign
                  (if (> fret-number (1- ls-length))

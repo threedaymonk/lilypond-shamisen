@@ -5,8 +5,6 @@
 
 shamisen-markup-font = #'(font-name . "IPAexGothic")
 
-underbar-width =  0.8
-
 \layout {
   \context {
     \Score
@@ -30,60 +28,49 @@ underbar-width =  0.8
   }
 }
 
+#(define (draw-underbars grob x-shift top lines)
+  (let* ((width 0.8)
+         (thickness 0.15)
+         (spacing 0.3))
+    (ly:stencil-translate
+      (grob-interpret-markup grob
+        (markup
+          (#:path thickness
+            (fold
+              (lambda (e a)
+                (cons*
+                  (list 'moveto (- x-shift (/ width 2)) (- top (* e spacing)))
+                  (list 'lineto (+ x-shift (/ width 2)) (- top (* e spacing)))
+                  a))
+              '()
+              (iota lines)))))
+      (cons 0 (interval-start '(0 . 0))))))
+
 #(define (dot-rests grob)
   (let* ((duration (ly:grob-property grob 'duration-log))
          (lines (- duration 2))
          (top -0.8)
-         (circle (ly:stencil-translate-axis (make-circle-stencil 0.4 0.1 #t) 0.4 X)))
+         (dia 0.4)
+         (circle (ly:stencil-translate-axis (make-circle-stencil dia 0.1 #t) dia X)))
     (case duration
       ((2) circle)
       ((3 4 5)
         (ly:stencil-add
           circle
-          (ly:stencil-translate
-           (grob-interpret-markup grob
-             (markup
-               (#:path 0.15
-                 (fold
-                   (lambda (e a)
-                     (cons*
-                       (list 'moveto 0 (- top (* e 0.3)))
-                       (list 'lineto underbar-width (- top (* e 0.3)))
-                       a))
-                   '()
-                   (iota lines)))))
-           (cons 0 (interval-start '(0 . 0))))))
-      (else (ly:rest::print grob)))
-  )
-)
+          (draw-underbars grob dia top lines)))
+      (else (ly:rest::print grob)))))
 
 #(define (underbars grob)
-   %(if (ly:stencil? (ly:stem::print grob))
-     (let* ((stencil (ly:stem::print grob))
-            (duration (ly:grob-property grob 'duration-log))
-            (lines (- duration 2))
-            (X-ext (ly:stencil-extent stencil X))
-            (Y-ext (ly:stencil-extent stencil Y))
-            (top (cdr Y-ext))
-            (width (interval-length X-ext))
-            (len (interval-length Y-ext)))
-       (if (> lines 0)
-         (ly:stencil-translate
-           (grob-interpret-markup grob
-             (markup
-               (#:path 0.15
-                 (fold
-                   (lambda (e a)
-                     (cons*
-                       (list 'moveto (- 0 (/ underbar-width 2)) (- top (* e 0.3)))
-                       (list 'lineto (/ underbar-width 2) (- top (* e 0.3)))
-                       a))
-                   '()
-                   (iota lines)))))
-           (cons 0 (interval-start '(0 . 0))))
-         #f))
+  (if (ly:stencil? (ly:stem::print grob))
+    (let* ((stencil (ly:stem::print grob))
+           (duration (ly:grob-property grob 'duration-log))
+           (lines (- duration 2))
+           (Y-ext (ly:stencil-extent stencil Y))
+           (top (cdr Y-ext)))
+      (if (> lines 0)
+        (draw-underbars grob 0 top lines)
+        #f))
       #f))
-
 
 hajiki-markup = \markup {
   \lower #0.5

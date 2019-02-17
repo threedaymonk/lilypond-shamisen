@@ -29,7 +29,7 @@ shamisen-markup-font = #'(font-name . "IPAexGothic")
 }
 
 #(define (draw-underbars grob x-shift top lines)
-  (let* ((width 0.8)
+  (let* ((width 1.2)
          (thickness 0.15)
          (spacing 0.3))
     (ly:stencil-translate

@@ -31,12 +31,13 @@ shamisen-markup-font = #'(font-name . "IPAexGothic")
 }
 
 #(define (draw-underbars grob x-shift top lines)
-  (let* ((width 1.2)
-         (thickness 0.15)
+  (let* ((width 1.1)
+         (thickness 0.12)
          (spacing 0.3))
     (ly:stencil-translate
       (grob-interpret-markup grob
         (markup
+          #:override '(line-cap-style . square)
           (#:path thickness
             (fold
               (lambda (e a)

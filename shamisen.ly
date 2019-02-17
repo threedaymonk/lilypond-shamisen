@@ -48,7 +48,7 @@ shamisen-markup-font = #'(font-name . "IPAexGothic")
               (iota lines)))))
       (cons 0 (interval-start '(0 . 0))))))
 
-#(define (dot-rests grob)
+#(define (dot-rest-stencil grob)
   (let* ((duration (ly:grob-property grob 'duration-log))
          (lines (- duration 2))
          (top -0.8)
@@ -62,7 +62,7 @@ shamisen-markup-font = #'(font-name . "IPAexGothic")
           (draw-underbars grob dia top lines)))
       (else (ly:rest::print grob)))))
 
-#(define (underbars grob)
+#(define (underbar-stem-stencil grob)
   (if (ly:stencil? (ly:stem::print grob))
     (let* ((stencil (ly:stem::print grob))
            (duration (ly:grob-property grob 'duration-log))
@@ -154,9 +154,9 @@ shamisenNotation = {
   \revert TabStaff.TupletBracket.stencil
   \revert TabStaff.TupletNumber.stencil
 
-  \override TabStaff.Stem.stencil = #underbars
+  \override TabStaff.Stem.stencil = #underbar-stem-stencil
   \revert TabStaff.Rest.stencil
-  \override Rest #'stencil = #dot-rests
+  \override Rest #'stencil = #dot-rest-stencil
   \override Stem.direction = #DOWN
   \override Stem.length = 0
 }

@@ -1,4 +1,4 @@
-shamisen-markup-font = #'(font-name . "IPAPGothic")
+shamisen-markup-font = #'(font-name . "IPAexGothic")
 
 underbar-width =  0.8
 

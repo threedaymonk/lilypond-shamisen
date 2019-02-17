@@ -11,13 +11,13 @@
   #(set-paper-size "a4")
   #(define fonts
     (set-global-fonts
-     #:roman "IPAPMincho" ; this must be an available font with Japanese characters
+     #:roman "IPAexGothic" ; this must be an available font with Japanese characters
      #:factor (/ staff-height pt 20) ; unnecessary if the staff size is default
     ))
 }
 
 % If this font is not available, replace with one that is
-% shamisen-markup-font = #'(font-name . "IPAPGothic")
+% shamisen-markup-font = #'(font-name . "IPAexGothic")
 
 \header {
   title = "例"

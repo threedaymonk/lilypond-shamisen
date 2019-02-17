@@ -87,8 +87,12 @@ uchi-markup = \markup {
   \override \shamisen-markup-font \center-align \teeny "ウ"
 }
 oshi-markup = \markup {
-  \lower #0.7
-  \override \shamisen-markup-font \center-align \teeny "┛ "
+  \override #'(line-cap-style . square)
+  \override #'(line-join-style . miter)
+  \path #0.12
+  #'((moveto -1.0 0.0)
+     (lineto 0.0 0.0)
+     (lineto 0.0 0.6))
 }
 keshi-markup = \markup {
   \lower #0.6

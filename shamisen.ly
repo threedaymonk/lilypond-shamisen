@@ -75,21 +75,22 @@ shamisen-markup-font = #'(font-name . "IPAexGothic")
       #f))
 
 hajiki-markup = \markup {
-  \lower #0.5
+  \lower #0.6
   \override \shamisen-markup-font \center-align \teeny "ハ"
 }
 sukui-markup = \markup {
-  \lower #0.5
+  \lower #0.6
   \override \shamisen-markup-font \center-align \teeny "ス"
 }
 uchi-markup = \markup {
-  \lower #0.5
+  \lower #0.6
   \override \shamisen-markup-font \center-align \teeny "ウ"
 }
 oshi-markup = \markup {
   \override \shamisen-markup-font \center-align \teeny "⅃"
 }
 keshi-markup = \markup {
+  \lower #0.6
   \override \shamisen-markup-font \center-align \teeny "ケ"
 }
 first = \markup {
@@ -158,7 +159,7 @@ shamisenNotation = {
   \revert TabStaff.Rest.stencil
   \override Rest #'stencil = #dot-rest-stencil
   \override Stem.direction = #DOWN
-  \override Stem.length = 0
+  \override Stem.length = #0.9
 }
 
 honchoushiTuning = \stringTuning <c f c'>

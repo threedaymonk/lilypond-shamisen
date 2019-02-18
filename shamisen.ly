@@ -3,8 +3,6 @@
 % For more information and updates, visit:
 % https://github.com/threedaymonk/lilypond-shamisen
 
-shamisen-markup-font = #'(font-name . "IPAexGothic")
-
 \layout {
   \context {
     \Score
@@ -76,16 +74,36 @@ shamisen-markup-font = #'(font-name . "IPAexGothic")
       #f))
 
 hajiki-markup = \markup {
-  \lower #0.6
-  \override \shamisen-markup-font \center-align \teeny "ハ"
+  \override #'(line-cap-style . square)
+  \override #'(line-join-style . miter)
+  \path #0.12
+  #'((moveto -0.212 0.334)
+     (curveto -0.289 0.053 -0.409 -0.157 -0.553 -0.338)
+     (moveto 0.155 0.352)
+     (curveto 0.328 0.106 0.458 -0.114 0.545 -0.307))
 }
 sukui-markup = \markup {
-  \lower #0.6
-  \override \shamisen-markup-font \center-align \teeny "ス"
+  \override #'(line-cap-style . square)
+  \override #'(line-join-style . miter)
+  \path #0.12
+	#'((moveto -0.412 0.422)
+		 (lineto 0.228 0.427)
+		 (lineto 0.268 0.386)
+		 (curveto 0.110 -0.046 -0.131 -0.276 -0.487 -0.457)
+		 (moveto 0.494 -0.434)
+		 (curveto 0.379 -0.313 0.247 -0.187 0.044 -0.036))
 }
 uchi-markup = \markup {
-  \lower #0.6
-  \override \shamisen-markup-font \center-align \teeny "ウ"
+  \override #'(line-cap-style . square)
+  \override #'(line-join-style . miter)
+  \path #0.12
+	#'((moveto -0.394 -0.055)
+		 (lineto -0.389 0.293)
+		 (lineto 0.372 0.293)
+		 (lineto 0.402 0.270)
+		 (curveto 0.371 -0.116 0.197 -0.391 -0.173 -0.505)
+		 (moveto -0.001 0.570)
+		 (lineto -0.001 0.310))
 }
 oshi-markup = \markup {
   \override #'(line-cap-style . square)
@@ -96,17 +114,24 @@ oshi-markup = \markup {
      (lineto 0.0 0.6))
 }
 keshi-markup = \markup {
-  \lower #0.6
-  \override \shamisen-markup-font \center-align \teeny "ケ"
+  \override #'(line-cap-style . square)
+  \override #'(line-join-style . miter)
+  \path #0.12
+	#'((moveto -0.168 0.552)
+		 (curveto -0.245 0.221 -0.377 0.048 -0.508 -0.084)
+		 (moveto -0.250 0.257)
+		 (lineto 0.530 0.257)
+		 (moveto 0.158 0.262)
+		 (curveto 0.186 -0.065 0.086 -0.342 -0.254 -0.523))
 }
 first = \markup {
-  \override \shamisen-markup-font \teeny "Ⅰ"
+  \teeny "Ⅰ"
 }
 second = \markup {
-  \override \shamisen-markup-font \teeny "Ⅱ"
+  \teeny "Ⅱ"
 }
 third = \markup {
-  \override \shamisen-markup-font \teeny "Ⅲ"
+  \teeny "Ⅲ"
 }
 
 #(append! default-script-alist

@@ -3,14 +3,6 @@
 This is a work in progress, but should be adequate for most pieces.
 Contributions, bug reports, and suggestions are very welcome.
 
-## Prerequisites
-
-The font *IPAexGothic* is required to annotate uchi, hajiki, etc. and must be
-installed and available. This is available to download from the website of the
-[Information-technology Promotion Agency](https://ipafont.ipa.go.jp/node26#en)
-in Japan ([ipaexg00301.zip](https://oscdl.ipa.go.jp/IPAexfont/ipaexg00301.zip))
-or by installing the [fonts-ipaexfont](apt:fonts-ipaexfont) package on Ubuntu.
-
 ## Usage
 
 The default staff size is quite small. 24 is recommended. Set this before
@@ -23,7 +15,8 @@ Include shamisen support:
     \include "shamisen.ly"
 
 Depending on your system, the default font will not support Japanese. If you
-want to use Japanese in the title or metre, you will need to change it:
+want to use Japanese in the title or metre, you will need to change it. See
+also the section on Fonts below.
 
     \paper{
       #(define fonts
@@ -131,3 +124,12 @@ Hajiki, sukui, etc. are normal annotations, using text markup.
 Also included is a small Ruby program that can convert a simple LilyPond-like
 language based on tablature into notes, to assist in transcribing existing
 works. See sakurasakura.txt for an example of how this works.
+
+## Fonts
+
+In my experience, LilyPond has problems (i.e. errors) when working with some
+Japanese fonts. The font *IPAexGothic* works well and is free to download from
+the website of the
+[Information-technology Promotion Agency](https://ipafont.ipa.go.jp/node26#en)
+in Japan ([ipaexg00301.zip](https://oscdl.ipa.go.jp/IPAexfont/ipaexg00301.zip))
+or by installing the [fonts-ipaexfont](apt:fonts-ipaexfont) package on Ubuntu.

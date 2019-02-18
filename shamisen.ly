@@ -3,6 +3,10 @@
 % For more information and updates, visit:
 % https://github.com/threedaymonk/lilypond-shamisen
 
+% This is the default, but we set it here to ensure that our note names work
+% in the tunings defined below.
+\language "nederlands"
+
 #(define (tsugaru-position-numbers context string-number fret-number)
   (let* ((shami-tab-signs
           '(0   1  2  3  "♯"  4  5  6  7  8  9  "♭"
@@ -196,5 +200,5 @@ shamisenNotation = {
 }
 
 honchoushiTuning = \stringTuning <c f c'>
-niagariTuning = \stringTuning <c g c'>
-sansagariTuning = \stringTuning <c f bf'>
+niagariTuning    = \stringTuning <c g c'>
+sansagariTuning  = \stringTuning <c f bes'>

@@ -41,7 +41,7 @@ insert notes as usual:
         \shamisenNotation
         \time 2/4
 
-        % notes
+        c8 es f g % etc. etc.
 
       }
     }

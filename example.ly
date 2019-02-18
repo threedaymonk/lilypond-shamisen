@@ -1,11 +1,11 @@
 \version "2.18.2"
+\include "shamisen.ly"
 
-% Make the staff bigger. Do this before including shamisen.ly
+% Make the staff bigger
 #(set-global-staff-size 32)
 
 % Use s/f for sharp/flat
 \language "english"
-\include "shamisen.ly"
 
 \paper{
   #(set-paper-size "a4")

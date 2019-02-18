@@ -7,14 +7,13 @@ Contributions, bug reports, and suggestions are very welcome.
 
 ## Usage
 
-The default staff size is quite small. 24 is recommended. Set this before
-including `shamisen.ly`:
-
-    #(set-global-staff-size 24)
-
 Include shamisen support:
 
     \include "shamisen.ly"
+
+The default staff size is quite small. Make it bigger if you wish:
+
+    #(set-global-staff-size 24)
 
 Depending on your system, the default font will not support Japanese. If you
 want to use Japanese in the title or metre, you will need to change it. See

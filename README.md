@@ -60,7 +60,7 @@ These extend the normal LilyPond annotations to add:
 - `\hajiki` left-hand pluck ハ
 - `\sukui` upstroke ス
 - `\uchi` hammer-on ウ
-- `\oshi` oshibachi/suberi ⅃
+- `\oshi` oshibachi ⅃
 - `\keshi` mute ケ
 
 Example:
@@ -78,8 +78,8 @@ This can be achieved in the normal way, but for convenience Roman numerals for
 
 These are entered as notes in the normal way:
 
-    c4 % -> 0
-    c8 % -> 0 with single underline
+    c4  % -> 0
+    c8  % -> 0 with single underline
     c8. % -> 0 with single underline and dot
     c16 % -> 0 with double underline
     c32 % -> 0 with triple underline
@@ -94,7 +94,7 @@ These are entered as rests in the normal way:
 
 ### 4300 phrases and similar
 
-The `\trtr { ... }` (*t*su*r*u*t*a*r*a) function squashes the spacing of the
+The `\trtr { ... }` (TsuRuTaRa) function squashes the spacing of the
 notes within the braces:
 
     \trtr { c'16\2^\third bes \hajiki g \hajiki g }
@@ -108,7 +108,7 @@ This is not implemented.
 
 ### Tsurutara spacing
 
-Spacing is removed from between the notes and added afterwards. Then the phrase
+Spacing is removed from between the notes and added afterwards. When the phrase
 is the last thing in a bar, the spacing is pushed to the next bar.
 
 ## Implementation notes
@@ -117,7 +117,7 @@ Underlining of notes is implemented as a different stencil for the note stem.
 
 The non-semitonal numbering of positions is achieved by a lookup function.
 
-Hajiki, sukui, etc. are normal annotations, using text markup.
+Hajiki, sukui, etc. are normal annotations, using custom stencils.
 
 ## Bonus
 

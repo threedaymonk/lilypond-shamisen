@@ -7,6 +7,11 @@ Contributions, bug reports, and suggestions are very welcome.
 
 ## Usage
 
+If you're familiar with Git, clone this repository and add it to LilyPond's
+include path. If not, the simplest way to get started is to
+[download the latest version of `shamisen.ly`](https://raw.githubusercontent.com/threedaymonk/lilypond-shamisen/docs/shamisen.ly)
+and put it in the same directory as the `.ly` file you're working on.
+
 Include shamisen support:
 
     \include "shamisen.ly"

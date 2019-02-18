@@ -51,14 +51,14 @@
   (let* ((duration (ly:grob-property grob 'duration-log))
          (lines (- duration 2))
          (top -0.8)
-         (dia 0.4)
-         (circle (ly:stencil-translate-axis (make-circle-stencil dia 0.1 #t) dia X)))
+         (radius 0.45)
+         (circle (ly:stencil-translate-axis (make-circle-stencil radius 0 #t) radius X)))
     (case duration
       ((2) circle)
       ((3 4 5)
         (ly:stencil-add
           circle
-          (draw-underbars grob dia top lines)))
+          (draw-underbars grob radius top lines)))
       (else (ly:rest::print grob)))))
 
 #(define (underbar-stem-stencil grob)

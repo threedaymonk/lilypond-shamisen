@@ -178,25 +178,27 @@ trtr =
   #})
 
 shamisenNotation = {
+  % Restore behaviour that is turned off by default in tablature
   \revert TabStaff.Script.stencil
   \revert TabStaff.TextScript.stencil
   \revert TabStaff.NoteColumn.ignore-collision
   \revert TabStaff.Dots.stencil
-  \revert TabStaff.Stem.stencil
-
   \revert TabStaff.Slur.stencil
   \revert TabStaff.PhrasingSlur.stencil
-
   \revert TabStaff.TupletBracket.stencil
   \revert TabStaff.TupletNumber.stencil
 
+  % Draw underbars instead of note tails, and dots for rests
   \override TabStaff.Stem.stencil = #underbar-stem-stencil
-  \revert TabStaff.Rest.stencil
-  \override Rest #'stencil = #dot-rest-stencil
-  \override Stem.direction = #DOWN
-  \override Stem.length = #0.9
+  \override TabStaff.Stem.direction = #DOWN
+  \override TabStaff.Stem.length = #0.9
+  \override TabStaff.Rest.stencil = #dot-rest-stencil
+
+  % Turn off the TAB clef
+  \override TabStaff.Clef.stencil = ##f
+
+  % Use Tsugaru position numberin
   \set TabStaff.tablatureFormat = #tsugaru-position-numbers
-  \override Staff.Clef.stencil = ##f
 }
 
 honchoushiTuning = \stringTuning <c f c'>

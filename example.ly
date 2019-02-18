@@ -23,6 +23,7 @@
   title = "例"
   subtitle = "Example"
   meter = "2/4 二上り"
+  composer = "百合ヶ池"
   tagline = "Typeset with LilyPond and shamisen.ly"
 }
 

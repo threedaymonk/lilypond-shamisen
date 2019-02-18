@@ -1,5 +1,7 @@
 # Shamisen notation for LilyPond
 
+![Sample output](example.svg)
+
 This is a work in progress, but should be adequate for most pieces.
 Contributions, bug reports, and suggestions are very welcome.
 

@@ -33,7 +33,8 @@ also the section on Fonts below.
     }
 
 Create a tab staff, set the tuning, tell it to use shamisen notation, and
-insert notes as usual:
+insert notes according to the usual
+[LilyPond text format](http://lilypond.org/text-input.html):
 
     \score {
       \new TabStaff {

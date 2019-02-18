@@ -1,4 +1,4 @@
-# Shamisen notation for LilyPond
+# Tsugaru shamisen notation for LilyPond
 
 ![Sample output](example.svg)
 

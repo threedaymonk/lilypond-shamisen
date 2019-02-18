@@ -182,6 +182,7 @@ shamisenNotation = {
   \override Stem.direction = #DOWN
   \override Stem.length = #0.9
   \set TabStaff.tablatureFormat = #tsugaru-position-numbers
+  \override Staff.Clef.stencil = ##f
 }
 
 honchoushiTuning = \stringTuning <c f c'>
@@ -202,10 +203,3 @@ trtr =
     \revert Score.SpacingSpanner.shortest-duration-space
     \once \override NoteColumn.X-offset = 1
   #})
-
-\layout {
-  \context {
-    \TabStaff
-    \remove "Clef_engraver"
-  }
-}

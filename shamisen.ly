@@ -3,30 +3,20 @@
 % For more information and updates, visit:
 % https://github.com/threedaymonk/lilypond-shamisen
 
-\layout {
-  \context {
-    \Score
-    tablatureFormat =
-      #(lambda (context string-number fret-number)
-        (let* ((shami-tab-signs
-                '(0   1  2  3  "♯"  4  5  6  7  8  9  "♭"
-                  10 11 12 13 "1♯" 14 15 16 17 18 19 "1♭"
-                  20 21 22 23 "2♯" 24 25 26))
-               (ls-length (length shami-tab-signs))
-               (my-sign
-                 (if (> fret-number (1- ls-length))
-                     fret-number
-                     (list-ref shami-tab-signs fret-number))))
-         (if (integer? fret-number)
-             (make-vcenter-markup
-               (format #f "~a" my-sign ))
-             (fret-number-tablature-format context string-number fret-number))))
-  }
-  \context {
-    \TabStaff
-    \remove "Clef_engraver"
-  }
-}
+#(define (tsugaru-position-numbers context string-number fret-number)
+	(let* ((shami-tab-signs
+					'(0   1  2  3  "♯"  4  5  6  7  8  9  "♭"
+						10 11 12 13 "1♯" 14 15 16 17 18 19 "1♭"
+						20 21 22 23 "2♯" 24 25 26))
+				 (ls-length (length shami-tab-signs))
+				 (my-sign
+					 (if (> fret-number (1- ls-length))
+							 fret-number
+							 (list-ref shami-tab-signs fret-number))))
+	 (if (integer? fret-number)
+			 (make-vcenter-markup
+				 (format #f "~a" my-sign ))
+			 (fret-number-tablature-format context string-number fret-number))))
 
 #(define (draw-underbars grob x-shift top lines)
   (let* ((width 1.1)
@@ -191,6 +181,7 @@ shamisenNotation = {
   \override Rest #'stencil = #dot-rest-stencil
   \override Stem.direction = #DOWN
   \override Stem.length = #0.9
+  \set TabStaff.tablatureFormat = #tsugaru-position-numbers
 }
 
 honchoushiTuning = \stringTuning <c f c'>
@@ -211,3 +202,10 @@ trtr =
     \revert Score.SpacingSpanner.shortest-duration-space
     \once \override NoteColumn.X-offset = 1
   #})
+
+\layout {
+  \context {
+    \TabStaff
+    \remove "Clef_engraver"
+  }
+}

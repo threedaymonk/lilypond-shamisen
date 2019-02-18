@@ -86,24 +86,24 @@ sukui-markup = \markup {
   \override #'(line-cap-style . square)
   \override #'(line-join-style . miter)
   \path #0.12
-	#'((moveto -0.412 0.422)
-		 (lineto 0.228 0.427)
-		 (lineto 0.268 0.386)
-		 (curveto 0.110 -0.046 -0.131 -0.276 -0.487 -0.457)
-		 (moveto 0.494 -0.434)
-		 (curveto 0.379 -0.313 0.247 -0.187 0.044 -0.036))
+  #'((moveto -0.412 0.422)
+     (lineto 0.228 0.427)
+     (lineto 0.268 0.386)
+     (curveto 0.110 -0.046 -0.131 -0.276 -0.487 -0.457)
+     (moveto 0.494 -0.434)
+     (curveto 0.379 -0.313 0.247 -0.187 0.044 -0.036))
 }
 uchi-markup = \markup {
   \override #'(line-cap-style . square)
   \override #'(line-join-style . miter)
   \path #0.12
-	#'((moveto -0.394 -0.055)
-		 (lineto -0.389 0.293)
-		 (lineto 0.372 0.293)
-		 (lineto 0.402 0.270)
-		 (curveto 0.371 -0.116 0.197 -0.391 -0.173 -0.505)
-		 (moveto -0.001 0.570)
-		 (lineto -0.001 0.310))
+  #'((moveto -0.394 -0.055)
+     (lineto -0.389 0.293)
+     (lineto 0.372 0.293)
+     (lineto 0.402 0.270)
+     (curveto 0.371 -0.116 0.197 -0.391 -0.173 -0.505)
+     (moveto -0.001 0.570)
+     (lineto -0.001 0.310))
 }
 oshi-markup = \markup {
   \override #'(line-cap-style . square)
@@ -117,12 +117,12 @@ keshi-markup = \markup {
   \override #'(line-cap-style . square)
   \override #'(line-join-style . miter)
   \path #0.12
-	#'((moveto -0.168 0.552)
-		 (curveto -0.245 0.221 -0.377 0.048 -0.508 -0.084)
-		 (moveto -0.250 0.257)
-		 (lineto 0.530 0.257)
-		 (moveto 0.158 0.262)
-		 (curveto 0.186 -0.065 0.086 -0.342 -0.254 -0.523))
+  #'((moveto -0.168 0.552)
+     (curveto -0.245 0.221 -0.377 0.048 -0.508 -0.084)
+     (moveto -0.250 0.257)
+     (lineto 0.530 0.257)
+     (moveto 0.158 0.262)
+     (curveto 0.186 -0.065 0.086 -0.342 -0.254 -0.523))
 }
 first = \markup {
   \teeny "Ⅰ"

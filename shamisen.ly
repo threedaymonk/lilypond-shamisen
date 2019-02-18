@@ -114,15 +114,6 @@ keshi-markup = \markup {
      (moveto 0.158 0.262)
      (curveto 0.186 -0.065 0.086 -0.342 -0.254 -0.523))
 }
-first = \markup {
-  \teeny "Ⅰ"
-}
-second = \markup {
-  \teeny "Ⅱ"
-}
-third = \markup {
-  \teeny "Ⅲ"
-}
 
 #(append! default-script-alist
   (list
@@ -158,10 +149,29 @@ third = \markup {
         (direction . ,DOWN)))))
 
 hajiki = #(make-articulation "hajiki")
-sukui = #(make-articulation "sukui")
-uchi = #(make-articulation "uchi")
-oshi = #(make-articulation "oshi")
-keshi = #(make-articulation "keshi")
+sukui  = #(make-articulation "sukui")
+uchi   = #(make-articulation "uchi")
+oshi   = #(make-articulation "oshi")
+keshi  = #(make-articulation "keshi")
+
+first  = \markup { \teeny "Ⅰ" }
+second = \markup { \teeny "Ⅱ" }
+third  = \markup { \teeny "Ⅲ" }
+
+trtr =
+#(define-music-function
+  (parser location music)
+  (ly:music?)
+  #{
+    \newSpacingSection
+    \override Score.SpacingSpanner.average-spacing-wishes = ##f
+    \override Score.SpacingSpanner.shortest-duration-space = #0
+    #music
+    \newSpacingSection
+    \revert Score.SpacingSpanner.average-spacing-wishes
+    \revert Score.SpacingSpanner.shortest-duration-space
+    \once \override NoteColumn.X-offset = 1
+  #})
 
 shamisenNotation = {
   \revert TabStaff.Script.stencil
@@ -188,18 +198,3 @@ shamisenNotation = {
 honchoushiTuning = \stringTuning <c f c'>
 niagariTuning = \stringTuning <c g c'>
 sansagariTuning = \stringTuning <c f bf'>
-
-trtr =
-#(define-music-function
-  (parser location music)
-  (ly:music?)
-  #{
-    \newSpacingSection
-    \override Score.SpacingSpanner.average-spacing-wishes = ##f
-    \override Score.SpacingSpanner.shortest-duration-space = #0
-    #music
-    \newSpacingSection
-    \revert Score.SpacingSpanner.average-spacing-wishes
-    \revert Score.SpacingSpanner.shortest-duration-space
-    \once \override NoteColumn.X-offset = 1
-  #})

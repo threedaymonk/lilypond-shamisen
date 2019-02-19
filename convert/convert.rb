@@ -27,9 +27,9 @@ end
 
 class Parser
   TUNINGS = {
-    'honchoushi' => [['c', 0],  ['f', 0], ['c', 1]],
-    'niagari' => [['c', 0], ['g', 0], ['c', 1]],
-    'sansagari' => [['c', 0],  ['f', 0], ['bf', 1]],
+    'honchoushi' => [['c', 0],  ['f', 0], ['c', 1], [4, 6]],
+    'niagari' => [['c', 0], ['g', 0], ['c', 1], [6, 4]],
+    'sansagari' => [['c', 0],  ['f', 0], ['bf', 1], [4, 4]],
   }
 
   POSITIONS = %w[ 0 1 2 3 # 4 5 6 7 8 9 b ]
@@ -115,7 +115,7 @@ private
         note = offset_to_note(open_name, open_octave, offset)
         io.print "#{note}#{duration}"
 
-        if s.scan(/!/) || (@string == 2 && offset >= 4) || (@string == 1 && offset >= 6)
+        if s.scan(/!/) || need_string(offset)
           io.print "\\#{@string}"
         end
       elsif s.scan(/\S+/)
@@ -123,6 +123,18 @@ private
       else
         raise "No idea at #{s}"
       end
+    end
+  end
+
+  def need_string(offset)
+    t1, t2 = @tuning[3]
+    case @string
+    when 1
+      offset >= t1
+    when 2
+      offset >= t2
+    else
+      false
     end
   end
 end

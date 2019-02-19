@@ -128,7 +128,7 @@ private
         io.print '\\uchi'
       elsif s.scan(/o/)
         io.print '\\oshi'
-      elsif s.scan(/\s+|r\d*/)
+      elsif s.scan(/\s+|r\d*\.?/)
         io.print s[0]
       elsif s.scan(/tuning\s+(?<name>\w+)/)
         @tuning = TUNINGS.fetch(s[:name])

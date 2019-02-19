@@ -78,6 +78,34 @@ private
     end
   end
 
+  def parse_notes(io, s)
+    notes = []
+    loop do
+      if s.scan(/[0-9#b]+/)
+        offset = position_to_offset(s[0])
+        if s.scan(/\\(?<string>\d)/)
+          @string = s[:string].to_i
+        end
+        open_name, open_octave = @tuning.fetch(@string - 1)
+        note = offset_to_note(open_name, open_octave, offset)
+        note << "\\#{@string}" if need_string(offset)
+        notes << note
+      elsif s.scan(/\s+/)
+        # next note
+      elsif s.scan(/>(?<duration>\d+\.?)?/)
+        duration = s[:duration]
+        if notes.length > 1 || notes.any? { |n| n =~ /\\/ }
+          io.print "<#{notes.join(' ')}>#{duration}"
+        else
+          io.print "#{notes.first}#{duration}"
+        end
+        return
+      else
+        raise "Expected notes at #{s.peek(20).inspect}"
+      end
+    end
+  end
+
   def parse_shamisen(io, s)
     until s.eos?
       if s.scan(/%}\s*/)
@@ -100,26 +128,12 @@ private
         io.print '\\uchi'
       elsif s.scan(/o/)
         io.print '\\oshi'
-      elsif s.scan(/\s+|r\d*|</)
+      elsif s.scan(/\s+|r\d*/)
         io.print s[0]
       elsif s.scan(/tuning\s+(?<name>\w+)/)
         @tuning = TUNINGS.fetch(s[:name])
-      elsif s.scan(/[0-9#b]+/)
-        offset = position_to_offset(s[0])
-        duration = nil
-        if s.scan(/-(?<duration>\d+\.?)/)
-          duration = s[:duration]
-        end
-        if s.scan(/\\(?<string>\d)/)
-          @string = s[:string].to_i
-        end
-        open_name, open_octave = @tuning.fetch(@string - 1)
-        note = offset_to_note(open_name, open_octave, offset)
-        io.print "#{note}#{duration}"
-
-        if s.scan(/!/) || need_string(offset)
-          io.print "\\#{@string}"
-        end
+      elsif s.scan(/</)
+        parse_notes io, s
       elsif s.scan(/\S+/)
         io.print s[0]
       else

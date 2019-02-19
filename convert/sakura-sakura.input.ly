@@ -1,23 +1,22 @@
 \version "2.18.2"
+\include "../shamisen.ly"
+\language "english"
+
 #(set-global-staff-size 24)
 
-\language "english"
-\include "shamisen.ly"
+\paper{
+  #(define fonts
+    (set-global-fonts
+     #:roman "IPAexGothic"
+     #:factor (/ staff-height pt 20) ; unnecessary if the staff size is default
+    ))
+}
 
 \header {
   title = "さくらさくら"
   subtitle = "Sakura Sakura"
   meter = "2/4 二上り"
-  tagline = "Typeset by Paul Battley using LilyPond"
-}
-
-\paper{
-  #(set-paper-size "a4")
-  #(define fonts
-    (set-global-fonts
-     #:roman "IPAPGothic"
-     #:factor (/ staff-height pt 20) ; unnecessary if the staff size is default
-    ))
+  tagline = ""
 }
 
 song = {

@@ -130,7 +130,7 @@ Hajiki, sukui, etc. are normal annotations, using custom stencils.
 
 Also included is a small Ruby program that can convert a simple LilyPond-like
 language based on tablature into notes, to assist in transcribing existing
-works. See sakurasakura.txt for an example of how this works.
+works. See sakura-sakura.input.ly for an example of how this works.
 
 ## Fonts
 

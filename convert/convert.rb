@@ -44,6 +44,13 @@ class Parser
   def parse(src, dest)
     s = StringScanner.new(src.read)
     parse_lilypond dest, s
+  rescue => e
+    sample = s.peek(80)
+    if s.peek(81) != sample
+      sample += "..."
+    end
+    $stderr.puts "#{e} at position #{s.pos}: #{sample}"
+    exit 1
   end
 
 private
@@ -73,7 +80,7 @@ private
       elsif s.scan(/.|\n/)
         io.print s[0]
       else
-        raise "No idea at #{s}"
+        raise "Unexpected sequence in parse_lilypond"
       end
     end
   end
@@ -83,7 +90,7 @@ private
     loop do
       if s.scan(/[0-9#b]+/)
         offset = position_to_offset(s[0])
-        if s.scan(/\\(?<string>\d)/)
+        if s.scan(/\\(?<string>[123])/)
           @string = s[:string].to_i
         end
         open_name, open_octave = @tuning.fetch(@string - 1)
@@ -101,7 +108,7 @@ private
         end
         return
       else
-        raise "Expected notes at #{s.peek(20).inspect}"
+        raise "Expected notes"
       end
     end
   end
@@ -137,7 +144,7 @@ private
       elsif s.scan(/\S+/)
         io.print s[0]
       else
-        raise "No idea at #{s}"
+        raise "Unexpected shamisen notation"
       end
     end
   end

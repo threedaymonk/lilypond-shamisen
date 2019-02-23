@@ -117,8 +117,6 @@ private
     until s.eos?
       if s.scan(/%}\s*/)
         return
-      elsif s.scan(/\\repeat\s+\S+\s+\d+/)
-        io.print s[0]
       elsif s.scan(/%\s*(.*)/)
         io.print s[1]
       elsif s.scan(/\s*iii/)

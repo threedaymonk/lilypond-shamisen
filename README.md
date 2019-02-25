@@ -58,7 +58,17 @@ insert notes according to the usual
 The default behaviour of LilyPond is to place notes on the lowest position
 (i.e. the highest string) possible. This can be overridden in the normal way:
 
-    c'\2 % play on the middle string
+    c'\2 % play on the middle string（２の糸）
+    c'\3 % play on the lowest string（１の糸）
+
+Note that LilyPond numbers the strings in the *opposite* way from
+normal shamisen usage: the lowest string is 3, and the highest is 1.
+
+(Although it is possible to reverse the order of strings and tablature in
+LilyPond and thus use the shamisen numbering convention, this breaks
+automatic note placement, with the result that all notes are placed on the
+lowest string. As this is more annoying than reversed numbering, we don't do
+this.)
 
 ### Annotations
 

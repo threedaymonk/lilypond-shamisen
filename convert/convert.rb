@@ -125,13 +125,13 @@ private
         io.print '^\\second'
       elsif s.scan(/\s*i/)
         io.print '^\\first'
-      elsif s.scan(/ha/)
+      elsif s.scan(/ha\b/)
         io.print '\\hajiki'
-      elsif s.scan(/su/)
+      elsif s.scan(/su\b/)
         io.print '\\sukui'
-      elsif s.scan(/u/)
+      elsif s.scan(/u\b/)
         io.print '\\uchi'
-      elsif s.scan(/o/)
+      elsif s.scan(/o\b/)
         io.print '\\oshi'
       elsif s.scan(/\s+|r\d*\.?/)
         io.print s[0]

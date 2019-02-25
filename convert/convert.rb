@@ -95,7 +95,7 @@ private
         end
         open_name, open_octave = @tuning.fetch(@string - 1)
         note = offset_to_note(open_name, open_octave, offset)
-        note << "\\#{@string}" if need_string(offset)
+        note << "\\#{4 - @string}" if need_string(offset)
         notes << note
       elsif s.scan(/\s+/)
         # next note

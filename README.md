@@ -123,11 +123,6 @@ notes within the braces:
 Some scores use a small square box to distinguish half notes from quarter notes.
 This is not implemented.
 
-### Tsurutara spacing
-
-Spacing is removed from between the notes and added afterwards. When the phrase
-is the last thing in a bar, the spacing is pushed to the next bar.
-
 ## Implementation notes
 
 Underlining of notes is implemented as a different stencil for the note stem.

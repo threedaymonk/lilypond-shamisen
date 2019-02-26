@@ -45,12 +45,14 @@
     c'8 c' \sukui
     \trtr { f'16 ef' \hajiki c' \hajiki bf }
 
-    g16 bf \uchi c'8 r4 \keshi
+    g16 bf \uchi c'8 \keshi r4
 
     f'8^\third( g') f' f' \sukui
 
     g8. f16 g8. \oshi <c g c'>16
 
     <c g c'>2\fermata
+
+    \bar "|."
   }
 }

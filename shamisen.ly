@@ -25,7 +25,7 @@
 #(define (draw-underbars grob x-shift top lines)
   (let* ((width 1.1)
          (thickness 0.12)
-         (spacing 0.3))
+         (spacing (/ 0.6 lines)))
     (ly:stencil-translate
       (grob-interpret-markup grob
         (markup

@@ -166,16 +166,16 @@ trtr =
 #(define-music-function
   (parser location music)
   (ly:music?)
-  #{
-    \newSpacingSection
-    \override Score.SpacingSpanner.average-spacing-wishes = ##f
-    \override Score.SpacingSpanner.shortest-duration-space = #0
-    #music
-    \newSpacingSection
-    \revert Score.SpacingSpanner.average-spacing-wishes
-    \revert Score.SpacingSpanner.shortest-duration-space
-    \once \override NoteColumn.X-offset = 1
-  #})
+  (let* ((es (ly:music-property music 'elements))
+         (unsquashed (make-music 'SequentialMusic 'elements (take es 1)))
+         (squashed (make-music 'SequentialMusic 'elements (drop es 1))))
+    #{
+      #unsquashed
+      \override NoteColumn.X-offset = -2
+      #squashed
+      \revert NoteColumn.X-offset
+    #}))
+
 
 shamisenNotation = {
   % Restore behaviour that is turned off by default in tablature

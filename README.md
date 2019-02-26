@@ -116,13 +116,6 @@ notes within the braces:
 
     \trtr { c'16\2^\third bes \hajiki g \hajiki g }
 
-## Limitations
-
-### Half notes
-
-Some scores use a small square box to distinguish half notes from quarter notes.
-This is not implemented.
-
 ## Implementation notes
 
 Underlining of notes is implemented as a different stencil for the note stem.

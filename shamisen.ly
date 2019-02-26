@@ -41,6 +41,20 @@
               (iota lines)))))
       (cons 0 (interval-start '(0 . 0))))))
 
+#(define (draw-elongator grob)
+  (let* ((x-offset 2)
+         (y-offset 0.67)
+         (width 1)
+         (thickness 0.12))
+    (ly:stencil-translate
+      (grob-interpret-markup grob
+        (markup
+          #:override '(line-cap-style . square)
+          (#:path thickness
+           `((moveto ,x-offset ,y-offset)
+             (rlineto ,width 0)))))
+      (cons 0 (interval-start '(0 . 0))))))
+
 #(define (dot-rest-stencil grob)
   (let* ((duration (ly:grob-property grob 'duration-log))
          (lines (- duration 2))
@@ -48,6 +62,10 @@
          (radius 0.45)
          (circle (ly:stencil-translate-axis (make-circle-stencil radius 0 #t) radius X)))
     (case duration
+      ((1)
+        (ly:stencil-add
+          circle
+          (draw-elongator grob)))
       ((2) circle)
       ((3 4 5)
         (ly:stencil-add
@@ -62,10 +80,10 @@
            (lines (- duration 2))
            (Y-ext (ly:stencil-extent stencil Y))
            (top (cdr Y-ext)))
-      (if (> lines 0)
-        (draw-underbars grob 0 top lines)
-        #f))
-      #f))
+      (case duration
+        ((1) (draw-elongator grob))
+        ((3 4 5) (draw-underbars grob 0 top lines))
+        (else #f)))))
 
 hajiki-markup = \markup {
   \override #'(line-cap-style . square)

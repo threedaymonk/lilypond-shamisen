@@ -73,6 +73,12 @@
           (draw-underbars grob radius top lines)))
       (else (ly:rest::print grob)))))
 
+#(define (scaling-tab-note-head-stencil grob)
+  (let* ((width (string-length (cadr (ly:grob-property grob 'text))))
+         (x-scale (/ (+ (/ 1 width) 1) 2))
+         (stencil (ly:stencil-scale (tab-note-head::print grob) x-scale 1)))
+    stencil))
+
 #(define (underbar-stem-stencil grob)
   (if (ly:stencil? (ly:stem::print grob))
     (let* ((stencil (ly:stem::print grob))
@@ -211,6 +217,7 @@ shamisenNotation = {
   \override TabStaff.Stem.direction = #DOWN
   \override TabStaff.Stem.length = #0.9
   \override TabStaff.Rest.stencil = #dot-rest-stencil
+  \override TabStaff.TabNoteHead.stencil = #scaling-tab-note-head-stencil
 
   % Turn off the TAB clef
   \override TabStaff.Clef.stencil = ##f

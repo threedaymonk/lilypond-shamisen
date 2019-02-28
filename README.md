@@ -116,6 +116,25 @@ notes within the braces:
 
     \trtr { c'16\2^\third bes \hajiki g \hajiki g }
 
+### Positions 10 and higher
+
+By default, double- and triple-character position numbers are compressed to 3/4
+and 2/3 of the normal width, respectively. This can be turned off in favour
+of LilyPond's default tablature rendering:
+
+    \revert TabStaff.TabNoteHead.stencil
+
+### Sharp and flat positions
+
+There are two options for displaying these non-numbered positions:
+
+* With sharps (♯, 9♯, 13♯ etc.)
+* With flats (4♭, 10♭, 14♭ etc.)
+
+The default is to use sharps. Flats can be selected instead:
+
+    \set TabStaff.tablatureFormat = #(custom-tab-format tsugaru-signs-with-flats)
+
 ## Implementation notes
 
 Underlining of notes is implemented as a different stencil for the note stem.

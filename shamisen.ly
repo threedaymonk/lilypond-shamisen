@@ -7,20 +7,27 @@
 % in the tunings defined below.
 \language "nederlands"
 
-#(define (tsugaru-position-numbers context string-number fret-number)
-  (let* ((shami-tab-signs
-          '(0   1  2  3  "♯"  4  5  6  7  8  9  "♭"
-            10 11 12 13 "1♯" 14 15 16 17 18 19 "1♭"
-            20 21 22 23 "2♯" 24 25 26))
-         (ls-length (length shami-tab-signs))
-         (my-sign
-           (if (> fret-number (1- ls-length))
-               fret-number
-               (list-ref shami-tab-signs fret-number))))
-   (if (integer? fret-number)
-       (make-vcenter-markup
-         (format #f "~a" my-sign ))
-       (fret-number-tablature-format context string-number fret-number))))
+tsugaru-signs =
+#'( 0  1  2  3   "♯"  4  5  6  7  8  9  "9♯"
+   10 11 12 13 "13♯" 14 15 16 17 18 19 "19♯"
+   20 21 22 23 "23♯" 24 25 26)
+
+tsugaru-signs-with-flats =
+#'( 0  1  2  3  "4♭"  4  5  6  7  8  9 "10♭"
+   10 11 12 13 "14♭" 14 15 16 17 18 19 "20♭"
+   20 21 22 23 "24♭" 24 25 26)
+
+#(define (custom-tab-format tab-signs)
+  (lambda (context string-number fret-number)
+    (let* ((ls-length (length tab-signs))
+           (my-sign
+             (if (> fret-number (1- ls-length))
+                 fret-number
+                 (list-ref tab-signs fret-number))))
+     (if (integer? fret-number)
+         (make-vcenter-markup
+           (format #f "~a" my-sign ))
+         (fret-number-tablature-format context string-number fret-number)))))
 
 #(define (draw-underbars grob x-shift top lines)
   (let* ((width 1.1)
@@ -222,8 +229,8 @@ shamisenNotation = {
   % Turn off the TAB clef
   \override TabStaff.Clef.stencil = ##f
 
-  % Use Tsugaru position numberin
-  \set TabStaff.tablatureFormat = #tsugaru-position-numbers
+  % Use Tsugaru position numbering
+  \set TabStaff.tablatureFormat = #(custom-tab-format tsugaru-signs)
 }
 
 honchoushiTuning = \stringTuning <c f c'>

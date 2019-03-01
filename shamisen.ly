@@ -157,30 +157,35 @@ keshi-markup = \markup {
         (stencil . ,ly:text-interface::print)
         (text . ,hajiki-markup)
         (quantize-position . #t)
+        (avoid-slur . around)
         (direction . ,DOWN)))
     `("sukui"
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,sukui-markup)
         (quantize-position . #t)
+        (avoid-slur . around)
         (direction . ,DOWN)))
    `("uchi"
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,uchi-markup)
         (quantize-position . #t)
+        (avoid-slur . around)
         (direction . ,DOWN)))
    `("oshi"
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,oshi-markup)
         (quantize-position . #t)
+        (avoid-slur . around)
         (direction . ,DOWN)))
    `("keshi"
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,keshi-markup)
         (quantize-position . #t)
+        (avoid-slur . around)
         (direction . ,DOWN)))))
 
 hajiki = #(make-articulation "hajiki")

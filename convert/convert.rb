@@ -119,11 +119,11 @@ private
         return
       elsif s.scan(/%\s*(.*)/)
         io.print s[1]
-      elsif s.scan(/\s*iii/)
+      elsif s.scan(/\s*\biii\b/)
         io.print '^\\third'
-      elsif s.scan(/\s*ii/)
+      elsif s.scan(/\s*\bii\b/)
         io.print '^\\second'
-      elsif s.scan(/\s*i/)
+      elsif s.scan(/\s*\bi\b/)
         io.print '^\\first'
       elsif s.scan(/ha\b/)
         io.print '\\hajiki'

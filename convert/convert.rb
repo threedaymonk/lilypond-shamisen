@@ -88,8 +88,9 @@ private
   def parse_notes(io, s)
     notes = []
     loop do
-      if s.scan(/[0-9#b]+/)
-        offset = position_to_offset(s[0])
+      if s.scan(/[0-9#b=]+/)
+        @position = s[0] unless s[0] == '='
+        offset = position_to_offset(@position)
         if s.scan(/\\(?<string>[123])/)
           @string = s[:string].to_i
         end

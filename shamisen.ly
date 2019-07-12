@@ -134,9 +134,9 @@ oshi-markup = \markup {
   \override #'(line-cap-style . square)
   \override #'(line-join-style . miter)
   \path #0.12
-  #'((moveto -1.0 0.0)
-     (lineto 0.0 0.0)
-     (lineto 0.0 0.6))
+  #'((moveto -1.0 -0.1)
+     (lineto 0.0 -0.1)
+     (lineto 0.0 0.5))
 }
 keshi-markup = \markup {
   \override #'(line-cap-style . square)

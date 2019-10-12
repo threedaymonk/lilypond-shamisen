@@ -212,6 +212,24 @@ trtr =
       \revert NoteColumn.X-offset
     #}))
 
+#(define (is-shamisen-articulation art)
+   (let* ((atype (ly:music-property art 'articulation-type))
+          (aname (ly:music-property art 'name))
+          (atypes '("hajiki" "sukui" "uchi" "oshi" "keshi"))
+          (anames '(StringNumberEvent TextScriptEvent)))
+     (cond ((member atype atypes) #t)
+           ((member aname anames) #t)
+           (else #f))))
+
+stripShamisenArticulations =
+  #(define-music-function (parser location music) (ly:music?)
+    (music-map
+     (lambda (m)
+      (let* ((arts (ly:music-property m 'articulations)))
+      (if (not (null? arts))
+          (ly:music-set-property! m 'articulations (remove is-shamisen-articulation arts))))
+      m)
+     music))
 
 shamisenNotation = {
   % Restore behaviour that is turned off by default in tablature

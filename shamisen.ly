@@ -223,6 +223,8 @@ shamisenNotation = {
   \revert TabStaff.PhrasingSlur.stencil
   \revert TabStaff.TupletBracket.stencil
   \revert TabStaff.TupletNumber.stencil
+  \revert TabStaff.Tie.stencil
+  \revert TabStaff.Tie.after-line-breaking
 
   % Draw underbars instead of note tails, and dots for rests
   \override TabStaff.Stem.stencil = #underbar-stem-stencil

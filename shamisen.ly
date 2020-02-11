@@ -260,4 +260,4 @@ shamisenNotation = {
 
 honchoushiTuning = \stringTuning <c f c'>
 niagariTuning    = \stringTuning <c g c'>
-sansagariTuning  = \stringTuning <c f bes'>
+sansagariTuning  = \stringTuning <c f bes>

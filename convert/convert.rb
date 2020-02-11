@@ -29,7 +29,7 @@ class Parser
   TUNINGS = {
     'honchoushi' => [['c', 0],  ['f', 0], ['c', 1], [4, 6]],
     'niagari' => [['c', 0], ['g', 0], ['c', 1], [6, 4]],
-    'sansagari' => [['c', 0],  ['f', 0], ['bf', 1], [4, 4]],
+    'sansagari' => [['c', 0],  ['f', 0], ['bf', 0], [4, 4]],
   }
 
   POSITIONS = %w[ 0 1 2 3 # 4 5 6 7 8 9 b ]

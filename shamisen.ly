@@ -236,32 +236,34 @@ stripShamisenArticulations =
       m)
      music))
 
-shamisenNotation = {
-  % Restore behaviour that is turned off by default in tablature
-  \revert TabStaff.Script.stencil
-  \revert TabStaff.TextScript.stencil
-  \revert TabStaff.NoteColumn.ignore-collision
-  \revert TabStaff.Dots.stencil
-  \revert TabStaff.Slur.stencil
-  \revert TabStaff.PhrasingSlur.stencil
-  \revert TabStaff.TupletBracket.stencil
-  \revert TabStaff.TupletNumber.stencil
-  \revert TabStaff.Tie.stencil
-  \revert TabStaff.Tie.after-line-breaking
+shamisenNotation =
+#(define-music-function (parser location tab-format) ((list? tsugaru-signs))
+  #{
+    % Restore behaviour that is turned off by default in tablature
+    \revert TabStaff.Script.stencil
+    \revert TabStaff.TextScript.stencil
+    \revert TabStaff.NoteColumn.ignore-collision
+    \revert TabStaff.Dots.stencil
+    \revert TabStaff.Slur.stencil
+    \revert TabStaff.PhrasingSlur.stencil
+    \revert TabStaff.TupletBracket.stencil
+    \revert TabStaff.TupletNumber.stencil
+    \revert TabStaff.Tie.stencil
+    \revert TabStaff.Tie.after-line-breaking
 
-  % Draw underbars instead of note tails, and dots for rests
-  \override TabStaff.Stem.stencil = #underbar-stem-stencil
-  \override TabStaff.Stem.direction = #DOWN
-  \override TabStaff.Stem.length = #0.9
-  \override TabStaff.Rest.stencil = #dot-rest-stencil
-  \override TabStaff.TabNoteHead.stencil = #scaling-tab-note-head-stencil
+    % Draw underbars instead of note tails, and dots for rests
+    \override TabStaff.Stem.stencil = #underbar-stem-stencil
+    \override TabStaff.Stem.direction = #DOWN
+    \override TabStaff.Stem.length = #0.9
+    \override TabStaff.Rest.stencil = #dot-rest-stencil
+    \override TabStaff.TabNoteHead.stencil = #scaling-tab-note-head-stencil
 
-  % Turn off the TAB clef
-  \override TabStaff.Clef.stencil = ##f
+    % Turn off the TAB clef
+    \override TabStaff.Clef.stencil = ##f
 
-  % Use Tsugaru position numbering
-  \set TabStaff.tablatureFormat = #(custom-tab-format tsugaru-signs)
-}
+    % Use Tsugaru position numbering
+    \set TabStaff.tablatureFormat = #(custom-tab-format tab-format)
+  #})
 
 honchoushiTuning = \stringTuning <c f c'>
 niagariTuning    = \stringTuning <c g c'>

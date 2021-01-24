@@ -39,7 +39,7 @@ insert notes according to the usual
     \score {
       \new TabStaff {
         \set TabStaff.stringTunings = #niagariTuning
-        \shamisenNotation
+        \shamisenNotation #tsugaru-signs
         \time 2/4
 
         c8 es f g % etc. etc.

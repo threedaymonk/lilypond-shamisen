@@ -193,6 +193,7 @@ sukui  = #(make-articulation "sukui")
 uchi   = #(make-articulation "uchi")
 oshi   = #(make-articulation "oshi")
 keshi  = #(make-articulation "keshi")
+suri   = ^\markup{ \overtie \teeny "   スリ   " }
 
 first  = \markup { \teeny "Ⅰ" }
 second = \markup { \teeny "Ⅱ" }

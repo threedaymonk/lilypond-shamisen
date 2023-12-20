@@ -154,6 +154,6 @@ works. See sakura-sakura.input.ly for an example of how this works.
 In my experience, LilyPond has problems (i.e. errors) when working with some
 Japanese fonts. The font *IPAexGothic* works well and is free to download from
 the website of the
-[Information-technology Promotion Agency](https://ipafont.ipa.go.jp/node26#en)
-in Japan ([ipaexg00301.zip](https://oscdl.ipa.go.jp/IPAexfont/ipaexg00301.zip))
+[CITPC](https://moji.or.jp/ipafont/ipafontdownload/)
+in Japan ([ipaexg00401.zip](https://moji.or.jp/wp-content/ipafont/IPAexfont/ipaexg00401.zip))
 or by installing the [fonts-ipaexfont](apt:fonts-ipaexfont) package on Ubuntu.

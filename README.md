@@ -1,5 +1,7 @@
 # Tsugaru shamisen notation for LilyPond
 
+Lilypond target version: 2.24
+
 ![Sample output](example.svg)
 
 This is a work in progress, but should be adequate for most pieces.
@@ -20,9 +22,9 @@ The default staff size is quite small. Make it bigger if you wish:
 
     #(set-global-staff-size 24)
 
-Depending on your system, the default font will not support Japanese. If you
-want to use Japanese in the title or metre, you will need to change it. See
-also the section on Fonts below.
+Depending on your system, the default font might not support Japanese. However,
+even if it does, you might want to change it anyway; see the section on Fonts
+below.
 
     \paper{
       #(define fonts
@@ -151,9 +153,13 @@ works. See sakura-sakura.input.ly for an example of how this works.
 
 ## Fonts
 
-In my experience, LilyPond has problems (i.e. errors) when working with some
-Japanese fonts. The font *IPAexGothic* works well and is free to download from
-the website of the
-[CITPC](https://moji.or.jp/ipafont/ipafontdownload/)
-in Japan ([ipaexg00401.zip](https://moji.or.jp/wp-content/ipafont/IPAexfont/ipaexg00401.zip))
-or by installing the [fonts-ipaexfont](apt:fonts-ipaexfont) package on Ubuntu.
+It is no longer necessary to use a Japanese font. However, in my opinion, the
+look of a Japanese gothic (≈ sans serif) font is more appropriate for shamisen
+scores than the default Lilypond font.
+
+The font *IPAexGothic* works well and is free to download from the website of
+the [CITPC] in Japan (file [ipaexg00401.zip]) or can be obtained by installing
+the `fonts-ipaexfont` package on Ubuntu or Debian.
+
+[CITPC]: https://moji.or.jp/ipafont/ipafontdownload/
+[ipaexg00401.zip]: https://moji.or.jp/wp-content/ipafont/IPAexfont/ipaexg00401.zip

@@ -1,4 +1,4 @@
-\version "2.18.2"
+\version "2.24.4"
 \include "shamisen.ly"
 
 % Make the staff bigger

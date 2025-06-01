@@ -152,35 +152,35 @@ keshi-markup = \markup {
 
 #(append! default-script-alist
   (list
-    `("hajiki"
+    `(hajiki
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,hajiki-markup)
         (quantize-position . #t)
         (avoid-slur . around)
         (direction . ,DOWN)))
-    `("sukui"
+    `(sukui
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,sukui-markup)
         (quantize-position . #t)
         (avoid-slur . around)
         (direction . ,DOWN)))
-   `("uchi"
+   `(uchi
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,uchi-markup)
         (quantize-position . #t)
         (avoid-slur . around)
         (direction . ,DOWN)))
-   `("oshi"
+   `(oshi
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,oshi-markup)
         (quantize-position . #t)
         (avoid-slur . around)
         (direction . ,DOWN)))
-   `("keshi"
+   `(keshi
       . (
         (stencil . ,ly:text-interface::print)
         (text . ,keshi-markup)
@@ -188,11 +188,11 @@ keshi-markup = \markup {
         (avoid-slur . around)
         (direction . ,DOWN)))))
 
-hajiki = #(make-articulation "hajiki")
-sukui  = #(make-articulation "sukui")
-uchi   = #(make-articulation "uchi")
-oshi   = #(make-articulation "oshi")
-keshi  = #(make-articulation "keshi")
+hajiki = #(make-articulation 'hajiki)
+sukui  = #(make-articulation 'sukui)
+uchi   = #(make-articulation 'uchi)
+oshi   = #(make-articulation 'oshi)
+keshi  = #(make-articulation 'keshi)
 
 first  = \markup { \teeny "Ⅰ" }
 second = \markup { \teeny "Ⅱ" }
@@ -215,7 +215,7 @@ trtr =
 #(define (is-shamisen-articulation art)
    (let* ((atype (ly:music-property art 'articulation-type))
           (aname (ly:music-property art 'name))
-          (atypes '("hajiki" "sukui" "uchi" "oshi" "keshi"))
+          (atypes '(hajiki sukui uchi oshi keshi))
           (anames '(StringNumberEvent TextScriptEvent)))
      (cond ((member atype atypes) #t)
            ((member aname anames) #t)
